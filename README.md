@@ -1,15 +1,15 @@
 # json-decode-pipeline
 
-Build JSON decoders using the pipeline [`(|>)`](http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Basics#|>)
+Build JSON decoders using the pipeline [`(|>)`](http://package.gren-lang.org/packages/gren-lang/core/3.0.0/Basics#|>)
 operator.
 
 ## Motivation
 
 It's common to decode into a record that has a `type alias`. Here's an example
-of this from the [`map3`](http://package.elm-lang.org/packages/elm-lang/core/5.0.0/Json-Decode#map3)
+of this from the [`map3`](http://package.gren-lang.org/packages/gren-lang/core/5.0.0/Json-Decode#map3)
 docs:
 
-```elm
+```gren
 type alias Job = { name : String, id : Int, completed : Bool }
 
 point : Decoder Job
@@ -34,7 +34,7 @@ easy to read and easy to modify.
 
 Here is a decoder built with this library.
 
-```elm
+```gren
 import Json.Decode as Decode exposing (Decoder, decodeString, float, int, nullable, string)
 import Json.Decode.Pipeline exposing (required, optional, hardcoded)
 
@@ -64,7 +64,7 @@ In this example:
 
 You could use this decoder as follows:
 
-```elm
+```gren
 decodeString
   userDecoder
   """
@@ -74,7 +74,7 @@ decodeString
 
 The result would be:
 
-```elm
+```gren
 { id = 123
 , email = Just "sam@example.com"
 , name = "Sam Sample"
@@ -84,7 +84,7 @@ The result would be:
 
 Alternatively, you could use it like so:
 
-```elm
+```gren
 decodeString
   userDecoder
   """
@@ -94,7 +94,7 @@ decodeString
 
 In this case, the result would be:
 
-```elm
+```gren
 { id = 123
 , email = Nothing
 , name = "(fallback if name is `null` or not present)"
